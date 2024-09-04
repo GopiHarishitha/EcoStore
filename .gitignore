@@ -12,6 +12,7 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Python Virtualenv
 .venv/
+venv/
 
 # Runtime data
 pids

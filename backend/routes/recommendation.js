@@ -34,9 +34,9 @@ router.get("/:userId", async (req, res) => {
   const { userId } = req.params;
 
   try {
-    const recommendations = await raccoon.recommendFor(userId, 8);
+    const recommendations = await raccoon.recommendFor(userId, 1);
     res.send({
-      message: "10 recommendations",
+      message: "1 recommendations",
       success: true,
       recommendations: recommendations,
     });

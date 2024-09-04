@@ -6,8 +6,8 @@ POST http://localhost:6000/user/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "test",
-    "email": "test@gmail.com",
+    "username": "test1",
+    "email": "test1@gmail.com",
     "password": "12345678"
 }
 
@@ -22,3 +22,21 @@ Content-Type: application/json
 
 ### Recommendations
 GET http://localhost:6000/recommendations/66d83a73b753aef362c5ccc9 HTTP/1.1
+
+### Like
+POST http://localhost:6000/recommendations/like HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId": "666d8e4d19c1250a8d9f286b7",
+    "productId": "66d87186bb03c1a5e68dcc16"
+}
+
+### Dislike
+POST http://localhost:6000/recommendations/dislike HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId": "66d83a73b753aef362c5ccc9",
+    "productId": "66d87186bb03c1a5e68dcc15"
+}

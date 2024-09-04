@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const userRouter = require("./routes/user");
 const recommendationRouter = require("./routes/recommendation");
+const cors = require("cors");
 require("dotenv").config();
 
 mongoose
@@ -10,6 +11,7 @@ mongoose
   .then(() => console.log("Database connnection established"))
   .catch(() => console.log("Failed to connect to database"));
 
+app.use(cors());
 app.use(express.json());
 
 app.use("/user", userRouter);
