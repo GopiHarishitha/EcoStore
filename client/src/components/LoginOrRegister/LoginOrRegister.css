@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #e3f2fd; /* Light blue background */
+    background: linear-gradient(to right, #e3f2fd, #bbdefb); /* Gradient from light blue to a slightly darker shade */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ffffff; /* White background for the form */
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    position: relative;
+    overflow: hidden;
+    width: 700px;
+    max-width: 100%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: row;
+}
+
+.form-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.form {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #ffffff; /* White background for forms */
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in {
+    left: 0;
+    z-index: 2;
+}
+
+.sign-up {
+    left: 50%;
+    opacity: 0;
+    z-index: 1;
+    transform: translateX(100%);
+}
+
+#toggleSignUp:checked ~ .container .sign-in {
+    transform: translateX(-100%);
+    opacity: 0;
+    z-index: 1;
+}
+
+#toggleSignUp:checked ~ .container .sign-up {
+    transform: translateX(0%);
+    opacity: 1;
+    z-index: 5;
+}
+
+input {
+    background-color: #f1f8e9; /* Light green background for inputs */
+    border: 1px solid #c8e6c9; /* Light green border */
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+button {
+    background-color: #3949ab; /* Darker blue for buttons */
+    color: #ffffff;
+    font-size: 14px;
+    padding: 10px 40px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+button.hidden {
+    background-color: transparent;
+    border-color: #ffffff;
+}
+
+.toggle-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 1000;
+}
+
+#toggleSignUp:checked ~ .container .toggle-container {
+    transform: translateX(-100%);
+    border-radius: 0 150px 100px 0;
+}
+
+.toggle {
+    background-color: #3949ab; /* Darker blue for toggle background */
+    height: 100%;
+    background: linear-gradient(to right, #5c6bc0, #3949ab); /* Gradient from light to dark blue */
+    color: #ffffff;
+    position: relative;
+    left: -100%;
+    width: 200%;
+    transition: all 0.6s ease-in-out;
+}
+
+#toggleSignUp:checked ~ .container .toggle {
+    transform: translateX(50%);
+}
+
+.toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    transition: all 0.6s ease-in-out;
+}
+
+.toggle-left {
+    transform: translateX(-200%);
+}
+
+#toggleSignUp:checked ~ .container .toggle-left {
+    transform: translateX(0);
+}
+
+.toggle-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+#toggleSignUp:checked ~ .container .toggle-right {
+    transform: translateX(200%);
+}
+
+.toggle-panel h2 {
+    font-size: 24px;
+    color: #3949ab; /* Dark blue for headings */
+}
+
+.toggle-panel p {
+    font-size: 14px;
+    color: #757575; /* Grey color for text */
+}
+
+.toggle-panel a {
+    color: #3949ab; /* Dark blue for links */
+    text-decoration: none;
+    font-weight: 600;
+}

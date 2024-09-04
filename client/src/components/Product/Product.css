@@ -1,0 +1,22 @@
+.prod-div {
+  background-color: #c2f3c227;
+}
+.bttn {
+  background-color: var(--bgc);
+  color: white;
+}
+.bttn:hover,
+.bttn:active {
+  border: 3px solid var(--bgc);
+  font-size: 1.3rem;
+}
+.ai-button {
+  transition: transform 0.2s;
+}
+.ai-button:hover {
+  transform: scale(1.07);
+}
+.ai-button img {
+  width: 50px;
+  height: 50px;
+}

@@ -2,15 +2,11 @@ import React, { useContext } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { SwitchContext } from "../../context/SwitchContext";
 import "./ProductList.css";
 
 function ProductList() {
-  let [switchContextValue, setSwitchContextValue] = useContext(SwitchContext);
-
   let [search, setSearch] = useState("");
   let [products, setProducts] = useState([]);
-  
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -24,8 +20,6 @@ function ProductList() {
 
   function handleDetails(itemId) {
     let product = products.find((prod) => prod.id === itemId);
-    //console.log(product)
-    setSwitchContextValue(true);
     navigate("/product", { state: product });
   }
 
@@ -36,20 +30,14 @@ function ProductList() {
   return (
     <div className="app-div">
       <div className="pt-3">
-        <input
-          type="text"
-          className="form-control w-50 mx-auto Shadow fs-3 mb-3"
-          placeholder="🔍Search here"
-          onChange={handleSearch}
-        />
         {search === "" ? (
-          <div className="row m-2">
+          <div className="row">
             {
               //iterating through the products array
-              products?.map((item) => (
+              products.map((item) => (
                 <div
                   key={item.id}
-                  className="col-md-4 mb-4 d-grid justify-content-space-around"
+                  className="col-md-6 mb-4 d-grid justify-content-space-around"
                   style={{ minHeight: "50vh" }}
                 >
                   <div className="card crd bg-white p-3 Shadow">
@@ -75,7 +63,7 @@ function ProductList() {
           </div>
         ) : (
           <div className="row">
-            {products?.map(
+            {products.map(
               (item) =>
                 item.title.toLowerCase().includes(search.toLowerCase()) ===
                   true && (
