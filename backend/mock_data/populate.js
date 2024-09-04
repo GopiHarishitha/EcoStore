@@ -1,13 +1,11 @@
 const mongoClient = require("mongodb").MongoClient;
 const data = require("./data");
-const users =require("./users");
-const axios=require("axios");
-
+const users = require("./users");
 
 async function populate() {
   const client = await mongoClient.connect("mongodb://localhost:27017/");
   const database = client.db("ecostore_db");
-  const collection = database.collection("products");
+  let collection = database.collection("products");
 
   try {
     await collection.insertMany(data);
@@ -15,15 +13,15 @@ async function populate() {
   } catch (error) {
     console.log("Error populating the database: " + error.message);
   }
-}
 
-async function populateUsers(){
-  for (const user in users){
-    const res = await axios.post("http://10.50.48.225:6000", user)
-    console.log(res.data);
+  collection = database.collection("users");
+
+  try {
+    await collection.insertMany(users);
+    console.log("Populated the users database");
+  } catch (error) {
+    console.log("Error populating the database: " + error.message);
   }
-  console.log("Populated Users");
 }
 
-// populate();
-populateUsers();
+populate();
