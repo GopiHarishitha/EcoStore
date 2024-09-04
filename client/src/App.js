@@ -32,7 +32,7 @@ function App() {
         },
         {
           path: "cart",
-          element: <Cart />,  
+          element: <Cart />,
         },
       ],
     },
