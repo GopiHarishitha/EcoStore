@@ -1,0 +1,12 @@
+.home-div {
+  position: relative;
+  width: 100%; /* Ensures the container takes up the full width of its parent */
+  overflow: hidden; /* Prevents the horizontal scrollbar by hiding any overflow */
+}
+
+.home-div video {
+  width: 100%; /* Makes the video fill the width of its parent container */
+  height: auto; /* Maintains the aspect ratio of the video */
+  display: block; /* Ensures no extra space due to inline-block behavior */
+  overflow: hidden;
+}
