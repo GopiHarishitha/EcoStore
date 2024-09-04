@@ -1,38 +1,31 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import Product from "./components/Product/Product";
 import Home from "./components/Home/Home";
-import ProductList from "./components/ProductList/ProductList";
+import LoginOrRegister from "./components/LoginOrRegister/LoginOrRegister";
+import Root from "./components/Root/Root";
 
 function App() {
   let router = createBrowserRouter([
     {
       path: "",
-      element: <Home />,
+      element: <Root />,
       children: [
         {
-          path: "/home",
+          path: "/",
           element: <Home />,
         },
         {
-          path: "/productlist",
-          element: <ProductList />,
-        },
-        {
-          path: "/product",
-          element: <Product />,
+          path: "/login-register",
+          element: <LoginOrRegister />,
         },
       ],
     },
   ]);
 
   return (
-    <div className='app-div'>
-      <RouterProvider router={router}/>
-      <div style={{minHeight:'40vh'}}>
-        <Outlet/>
-      </div>
+    <div className="app-div">
+      <RouterProvider router={router} />
     </div>
   );
 }
