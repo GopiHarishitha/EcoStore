@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use("/user", userRouter);
 
-app.get("/", (req, res) => res.send({ message: "Test Successful" }));
+app.get("/", (_, res) => res.send({ message: "Test Successful" }));
 
 const port = process.env.PORT;
 
