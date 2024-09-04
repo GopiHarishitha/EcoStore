@@ -6,8 +6,8 @@ require("dotenv").config();
 
 router.post("/register", async (req, res) => {
   try {
-    const { username, password, email } = req.body;
-    const user = await createUser(username, password, email);
+    const { username, password, email, searchHistory } = req.body;
+    const user = await createUser(username, password, email, searchHistory);
     res.send({ success: true, message: "Registered Successfully", user: user });
   } catch (error) {
     res.send({
