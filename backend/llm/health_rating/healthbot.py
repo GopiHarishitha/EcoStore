@@ -47,7 +47,7 @@ model = OllamaLLM(model="llama3.1", temperature=0, model_kwargs={"n_gpu_layers":
 rating_chain = prompt | model
 
 if __name__ == "__main__":
-    query = input("Enter a product name: ")
+    query = input("Enter a product name: ").lower()
     response = rating_chain.invoke({"product": query})
 
     print(f"Model Response:\n{response}")
