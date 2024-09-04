@@ -1,8 +1,7 @@
-import ProductList from "../ProductList/ProductList";
-import { Outlet } from "react-router-dom";
+import React from "react";
 
 function Home() {
-  return <div className="home-div"></div>;
+  return <div>Home</div>;
 }
 
 export default Home;
