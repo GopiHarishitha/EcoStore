@@ -1,8 +1,14 @@
 const User = require("../models/User");
 
-const createUser = async (username, password, email) => {
+const createUser = async (username, password, email, searchHistory = []) => {
   try {
-    const user = new User({ username, password, email });
+    const user = new User({
+      username,
+      password,
+      email,
+      searchHistory,
+      purchaseHistory: [],
+    });
     await user.save();
     return user;
   } catch (error) {

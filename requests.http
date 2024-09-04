@@ -19,3 +19,6 @@ Content-Type: application/json
     "username": "test",
     "password": "12345678"
 }
+
+### Recommendations
+GET http://localhost:6000/recommendations/66d83a73b753aef362c5ccc9 HTTP/1.1
