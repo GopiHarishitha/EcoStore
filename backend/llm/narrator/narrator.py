@@ -5,8 +5,8 @@ prompt_template = """
 I have a product titled "{product}". I want you to write a narrative about the product.
 It should tell about what the product is, about it's environmental sustainability. It's sustainability score is {sustainability}
 Then talk about how the product affects the health of the consumer based on the health rating. {rating}.
-Your output should only contain the narrative and nothing else.
 Restrict the content to only 3 to 4 lines. Keep it simple and clean.
+Your output should only contain the narrative content. Don't include any leading text.
 """
 
 # prompt_template = """
