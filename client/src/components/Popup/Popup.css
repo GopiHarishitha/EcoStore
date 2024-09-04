@@ -1,0 +1,53 @@
+.popup-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-popup {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: #c2f3c2c0;
+  border: 3px solid var(--text);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000;
+  width: 250px;
+}
+
+/* .popup-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.popup-email {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+} */
+
+.detail {
+  border-bottom: 2px solid rgba(128, 128, 128, 0.619);
+  padding: 2% 0%;
+  color: black;
+  outline: none;
+  border: none;
+}
+
+.buton {
+  outline: none;
+  border: none;
+  background-color: inherit;
+  padding: 0.4rem 1.2rem;
+}
+
+.buton:hover {
+  padding: 0.4rem 1.2rem;
+  border-radius: 25px;
+}
+
+.buton:hover {
+  border: 2px solid var(--text);
+}

@@ -1,4 +1,3 @@
-import ProductList from "../ProductList/ProductList";
 import { Outlet } from "react-router-dom";
 import bgvideo from "../../assets/bgvideo.mp4";
 import "./Home.css";

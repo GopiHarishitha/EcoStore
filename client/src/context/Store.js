@@ -1,14 +1,14 @@
-import { SwitchContext } from './SwitchContext';
-import React, { useState } from 'react';
+import { PopupContext } from "./PopupContext";
+import React, { useState } from "react";
 
 function Store({ children }) {
   // Use a different name for the state variable
-  let [switchContextValue, setSwitchContextValue] = useState(false);
+  let [popupContextValue, setPopupContextValue] = useState(false);
 
   return (
-    <SwitchContext.Provider value={[switchContextValue, setSwitchContextValue]}>
+    <PopupContext.Provider value={[popupContextValue, setPopupContextValue]}>
       {children}
-    </SwitchContext.Provider>
+    </PopupContext.Provider>
   );
 }
 
