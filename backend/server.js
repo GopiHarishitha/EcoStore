@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const userRouter = require("./routes/user");
+const recommendationRouter = require("./routes/recommendation");
 require("dotenv").config();
 
 mongoose
@@ -12,6 +13,7 @@ mongoose
 app.use(express.json());
 
 app.use("/user", userRouter);
+app.use("/recommendations", recommendationRouter);
 
 app.get("/", (_, res) => res.send({ message: "Test Successful" }));
 
