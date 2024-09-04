@@ -1,5 +1,8 @@
 const mongoClient = require("mongodb").MongoClient;
 const data = require("./data");
+const users =require("./users");
+const axios=require("axios");
+
 
 async function populate() {
   const client = await mongoClient.connect("mongodb://localhost:27017/");
@@ -14,4 +17,13 @@ async function populate() {
   }
 }
 
-populate();
+async function populateUsers(){
+  for (const user in users){
+    const res = await axios.post("http://10.50.48.225:6000", user)
+    console.log(res.data);
+  }
+  console.log("Populated Users");
+}
+
+// populate();
+populateUsers();
