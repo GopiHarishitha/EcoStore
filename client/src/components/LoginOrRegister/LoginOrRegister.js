@@ -24,7 +24,7 @@ function LoginOrRegister() {
 
     if (res.data.success) {
       dispatch(setUser(res.data.user));
-      navigate("/");
+      navigate("/user-profile");
     } else {
       console.log("Error: " + res.data.message);
     }

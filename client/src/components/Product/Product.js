@@ -35,7 +35,7 @@ function Product() {
 
   function handleBack() {
     // setSwitchContextValue(false);
-    navigate("/home");
+    navigate("/");
   }
 
   const toggleModal = () => {

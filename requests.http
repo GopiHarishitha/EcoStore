@@ -21,15 +21,15 @@ Content-Type: application/json
 }
 
 ### Recommendations
-GET http://localhost:5000/recommendations/66d83a73b753aef362c5ccc9 HTTP/1.1
+GET http://localhost:5000/recommendations/66d87186bb03c1a5e68dcc17 HTTP/1.1
 
 ### Like
-POST http://localhost:6000/recommendations/like HTTP/1.1
+POST http://localhost:5000/recommendations/like HTTP/1.1
 Content-Type: application/json
 
 {
-    "userId": "666d8e4d19c1250a8d9f286b7",
-    "productId": "66d87186bb03c1a5e68dcc16"
+    "userId": "66d87186bb03c1a5e68dcc17",
+    "productId": "b"
 }
 
 ### Dislike
