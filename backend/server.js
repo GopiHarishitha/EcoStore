@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const userRouter = require("./routes/user");
 const recommendationRouter = require("./routes/recommendation");
+const productRouter = require("./routes/products");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 
 app.use("/user", userRouter);
 app.use("/recommendations", recommendationRouter);
+app.use("/products", productRouter);
 
 app.get("/", (_, res) => res.send({ message: "Test Successful" }));
 
