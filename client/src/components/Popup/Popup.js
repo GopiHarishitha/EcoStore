@@ -1,9 +1,11 @@
 import React from "react";
 import "./Popup.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { reset } from "../../redux/slices/userSlice";
 
 function Popup({ children }) {
   const { user } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
 
   return (
     <div className="dropdown user-drop">
@@ -24,7 +26,12 @@ function Popup({ children }) {
           <hr className="dropdown-divider" />
         </li>
         <li>
-          <button className="btn btn-danger dropdown-item">Sign Out</button>
+          <button
+            className="btn btn-danger dropdown-item"
+            onClick={() => dispatch(reset())}
+          >
+            Sign Out
+          </button>
         </li>
       </ul>
     </div>
