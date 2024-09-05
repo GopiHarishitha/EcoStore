@@ -9,7 +9,7 @@ const userSlice = createSlice({
     errorMessage: "",
   },
   reducers: {
-    login: (state, action) => {
+    setUser: (state, action) => {
       state.user = action.payload;
       state.loggedIn = true;
       state.error = false;
@@ -24,5 +24,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { login, reset } = userSlice.actions;
+export const { setUser, reset } = userSlice.actions;
 export default userSlice.reducer;
