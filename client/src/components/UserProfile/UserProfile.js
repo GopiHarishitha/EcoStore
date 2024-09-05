@@ -2,7 +2,6 @@ import React from "react";
 import ecofriend from "../../assets/ecofriend.png";
 import "./UserProfile.css";
 import ProductList from "../ProductList/ProductList";
-import Popup from "../Popup/Popup";
 
 function UserProfile() {
   return (

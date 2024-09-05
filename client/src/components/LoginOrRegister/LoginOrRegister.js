@@ -16,7 +16,7 @@ function LoginOrRegister() {
   const navigate = useNavigate();
   const [login, setLogin] = useState(true);
 
-  const handleFormSubmit = async (userObj) => {
+  async function handleFormSubmit(userObj) {
     const res = await axios.post(
       `${process.env.REACT_APP_HOST}/user/login`,
       userObj
@@ -28,7 +28,7 @@ function LoginOrRegister() {
     } else {
       console.log("Error: " + res.data.message);
     }
-  };
+  }
 
   const handleFormSubmitRegister = async (userObj) => {
     const res = await axios.post(

@@ -42,8 +42,9 @@ function Navbar() {
           </div>
           <div className="nav-login">
             <div className="navlink popup pop">
-              <img src={profile} alt="profile" />
-              <Popup />
+              <Popup>
+                <img src={profile} alt="profile" />
+              </Popup>
             </div>
             <NavLink className="navlink pop" to="cart">
               <img src={cart} alt="cart" />
