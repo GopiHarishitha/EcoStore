@@ -1,23 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import "./Product.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faThumbsUp,
-  faThumbsDown,
-  faRobot,
-} from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import ai from "../../assets/ai.png";
 import Modal from "../Modal/Modal";
+import axios from "axios";
 
 function Product() {
   const [liked, setLiked] = useState(false);
+  const [content, setContent] = useState("");
   const [modal, setModal] = useState(false);
   let { state } = useLocation();
   let product = state;
   let navigate = useNavigate();
   // let [switchContextValue, setSwitchContextValue] = useContext(SwitchContext);
+
+  useEffect(() => {
+    const getNarrative = async () => {
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_LLM}/narrative`,
+          {
+            product: product.name,
+            sustainability: product.sustainabilityScore || 3,
+          }
+        );
+        setContent(response.data.response);
+      } catch (err) {
+        console.log("Error: " + err.message);
+      }
+    };
+    getNarrative();
+  }, []);
 
   if (!product) {
     return <div>No product information available.</div>;
@@ -34,7 +49,6 @@ function Product() {
   };
 
   function handleBack() {
-    // setSwitchContextValue(false);
     navigate("/");
   }
 
@@ -42,14 +56,8 @@ function Product() {
     setModal(!modal);
   };
 
-  if (modal) {
-    document.body.classList.add("active-modal");
-  } else {
-    document.body.classList.remove("active-modal");
-  }
-
   return (
-    <div className="product">
+    <div className={`product ${modal && "stop-scroll"}`}>
       <button className="btn bttn m-3" onClick={handleBack}>
         Back
       </button>
@@ -63,25 +71,25 @@ function Product() {
       >
         <div className="col-6 Col">
           <img
-            src={product.image}
-            alt="image"
+            src={product.images}
+            alt="product"
             className="d-block w-50 mx-auto"
           />
         </div>
         <div className="col-6 Col p-4">
           <h4 className="fs-5">Title: </h4>
-          <p className="fs-5">{product.title}</p>
+          <p className="fs-5">{product.name}</p>
 
           <h4 className="fs-5">Category: </h4>
           <p className="fs-5">{product.category}</p>
 
-          <h4 className="fs-5">Description: </h4>
-          <p className="fs-5">{product.description}</p>
+          {/* <h4 className="fs-5">Description: </h4>
+          <p className="fs-5">{product.description}</p> */}
 
           <h4>Price: {product.price}</h4>
 
-          <h4>{product.rating.rate}⭐</h4>
-          <p className="fs-4 col-6">{product.rating.count} Rated</p>
+          <h4>{product.rating}⭐</h4>
+          <p className="fs-4 col-6">{product.no_of_ratings} Rated</p>
           <div className="row justify-content-between">
             {/* like-dislike */}
             <div className="row col-6">
@@ -109,25 +117,20 @@ function Product() {
         </div>
       </div>
       <>
-        <button onClick={toggleModal} className="btn-modal">
+        {/* <button onClick={toggleModal} className="btn-modal">
           Open
-        </button>
+        </button> */}
 
         {modal && (
-          <div className="modal">
-            <div onClick={toggleModal} className="overlay"></div>
-            <div className="modal-content">
-              <h2>Hello Modal</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Provident perferendis suscipit officia recusandae, eveniet
-                quaerat assumenda id fugit, dignissimos maxime non natus placeat
-                illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur
-                possimus quaerat ipsum quos molestiae rem aspernatur dicta
-                tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea.
-              </p>
-              <button className="close-modal" onClick={toggleModal}>
-                CLOSE
+          <div className="ai-box">
+            <div className="ai-content">
+              <h1>{product.name} Narrative</h1>
+              <p>{content}</p>
+              <button
+                onClick={toggleModal}
+                className="btn btn-danger mx-auto d-block mt-5"
+              >
+                Close
               </button>
             </div>
           </div>

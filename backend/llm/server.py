@@ -17,4 +17,5 @@ async def health_rating(productQuery: RatingQuery):
 async def narrative(narrativeQuery: NarrativeQuery):
     health = rating_chain.invoke({"product": narrativeQuery.product})
     response = narrative_chain.invoke({"product": narrativeQuery.product, "sustainability": narrativeQuery.sustainability, "rating": health})
+    response = {"response": response}
     return JSONResponse(content=response)
