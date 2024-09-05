@@ -9,4 +9,5 @@
   height: auto; /* Maintains the aspect ratio of the video */
   display: block; /* Ensures no extra space due to inline-block behavior */
   overflow: hidden;
+  z-index: -10;
 }
